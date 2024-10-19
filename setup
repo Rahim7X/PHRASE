@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Update the package manager
+echo "Updating package manager..."
+sudo apt update
+
+# Install required Python packages
+echo "Installing required Python packages..."
+pip install pycryptodome pyperclip --break-system-packages
+
+# Get the current directory
+current_dir="$(pwd)"
+
+# Check if the current directory is already in .zshrc
+if grep -Fxq "export PATH=\"\$PATH:$current_dir\"" ~/.zshrc; then
+    echo "Current directory is already in PATH in .zshrc."
+else
+    # Append the current directory to .zshrc
+    echo "Adding current directory to PATH in .zshrc..."
+    echo "export PATH=\"\$PATH:$current_dir\"" >> ~/.zshrc
+    echo "Current directory added to PATH in .zshrc."
+fi
+
+# Inform the user
+echo "Setup complete. Current directory will be added to PATH in new terminal sessions."
+
+# Source .zshrc to apply changes immediately
+echo "Sourcing .zshrc..."
+source ~/.zshrc
+echo "Changes applied. You can verify the changes by running 'echo \$PATH'."
+
