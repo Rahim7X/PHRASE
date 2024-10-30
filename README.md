@@ -25,8 +25,8 @@ Welcome to the Phrase CLI Password Manager! This is a simple command-line tool f
    ```
 2. Run the setup script to install dependencies and configure your shell:
 ```bash
-chmod +x setup.sh
-./setup.sh
+chmod +x setup
+./setup
 ```
 ## Usage
 You can interact with the Phrase CLI Password Manager using the following commands:
